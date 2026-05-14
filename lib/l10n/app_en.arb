@@ -1,0 +1,114 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Griffe",
+  "@appTitle": {
+    "description": "Application name shown on the login screen and as window title."
+  },
+
+  "appTagline": "Sign with Nostr",
+  "@appTagline": {
+    "description": "Subtitle under the app name on the login screen."
+  },
+
+  "signTitle": "Sign",
+  "@signTitle": {
+    "description": "AppBar title of the sign screen."
+  },
+
+  "logoutTooltip": "Sign out",
+  "@logoutTooltip": {
+    "description": "Tooltip for the logout icon in the AppBar."
+  },
+
+  "kindLabel": "Kind (integer)",
+  "@kindLabel": {
+    "description": "Label of the integer text field where the user enters the Nostr event kind."
+  },
+
+  "contentSection": "Content",
+  "@contentSection": {
+    "description": "Section title above the content text area."
+  },
+
+  "contentHint": "Write the content here…",
+  "@contentHint": {
+    "description": "Placeholder text inside the content text area."
+  },
+
+  "tagsSection": "Tags",
+  "@tagsSection": {
+    "description": "Section title above the tag editor."
+  },
+
+  "tagsAddButton": "Add",
+  "@tagsAddButton": {
+    "description": "Label for the button that appends a new empty tag row."
+  },
+
+  "tagsEmptyHint": "No tags.",
+  "@tagsEmptyHint": {
+    "description": "Shown in the tags section when no tag rows exist."
+  },
+
+  "tagNameLabel": "name",
+  "@tagNameLabel": {
+    "description": "Label for the tag-name field inside a tag row."
+  },
+
+  "tagValueLabel": "value",
+  "@tagValueLabel": {
+    "description": "Label for the tag-value field inside a tag row."
+  },
+
+  "signButton": "Sign",
+  "@signButton": {
+    "description": "Main call-to-action button that signs the event."
+  },
+
+  "errorInvalidKind": "Invalid kind",
+  "@errorInvalidKind": {
+    "description": "Error message shown when the user-entered custom kind cannot be parsed as an integer."
+  },
+
+  "errorCannotSign": "This session cannot sign (read-only account). Sign in again with a private key.",
+  "@errorCannotSign": {
+    "description": "Error shown when the logged-in account has no private key (npub-only login)."
+  },
+
+  "errorSaveFile": "Save error: {error}",
+  "@errorSaveFile": {
+    "description": "Snackbar message shown when saving the .json file fails. {error} contains the exception string.",
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+
+  "signedEventSection": "Signed event",
+  "@signedEventSection": {
+    "description": "Title of the result card that appears after a successful signature."
+  },
+
+  "copyButton": "Copy",
+  "@copyButton": {
+    "description": "Button that copies the signed event JSON to the clipboard."
+  },
+
+  "saveJsonButton": "Save .json",
+  "@saveJsonButton": {
+    "description": "Button that opens the native save dialog to write the signed event JSON to a file."
+  },
+
+  "copiedSnackbar": "JSON copied to clipboard",
+  "@copiedSnackbar": {
+    "description": "Snackbar confirming the JSON was copied."
+  },
+
+  "savedSnackbar": "File saved: {path}",
+  "@savedSnackbar": {
+    "description": "Snackbar confirming the .json file was saved. {path} is the chosen filesystem path.",
+    "placeholders": {
+      "path": { "type": "String" }
+    }
+  }
+}

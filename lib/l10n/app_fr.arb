@@ -1,0 +1,31 @@
+{
+  "@@locale": "fr",
+
+  "appTitle": "Griffe",
+  "appTagline": "Signez avec Nostr",
+
+  "signTitle": "Signer",
+  "logoutTooltip": "Se déconnecter",
+
+  "kindLabel": "Kind (entier)",
+
+  "contentSection": "Contenu",
+  "contentHint": "Saisissez le contenu ici…",
+
+  "tagsSection": "Tags",
+  "tagsAddButton": "Ajouter",
+  "tagsEmptyHint": "Aucun tag.",
+  "tagNameLabel": "nom",
+  "tagValueLabel": "valeur",
+
+  "signButton": "Signer",
+  "errorInvalidKind": "Kind invalide",
+  "errorCannotSign": "Cette session ne peut pas signer (compte read-only). Reconnectez-vous avec une clé privée.",
+  "errorSaveFile": "Erreur enregistrement : {error}",
+
+  "signedEventSection": "Événement signé",
+  "copyButton": "Copier",
+  "saveJsonButton": "Enregistrer .json",
+  "copiedSnackbar": "JSON copié dans le presse-papier",
+  "savedSnackbar": "Fichier enregistré : {path}"
+}
