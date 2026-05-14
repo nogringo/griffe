@@ -12,10 +12,12 @@ import 'screens/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final ndk = Ndk(NdkConfig(
-    cache: MemCacheManager(),
-    eventVerifier: kIsWeb ? WebEventVerifier() : Bip340EventVerifier(),
-  ));
+  final ndk = Ndk(
+    NdkConfig(
+      cache: MemCacheManager(),
+      eventVerifier: kIsWeb ? WebEventVerifier() : Bip340EventVerifier(),
+    ),
+  );
   final ndkFlutter = NdkFlutter(ndk: ndk);
   await ndkFlutter.restoreAccountsState();
 

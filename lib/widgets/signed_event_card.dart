@@ -65,10 +65,7 @@ class SignedEventCard extends StatelessWidget {
               ),
               child: SelectableText(
                 json,
-                style: const TextStyle(
-                  fontFamily: 'monospace',
-                  fontSize: 12,
-                ),
+                style: const TextStyle(fontFamily: 'monospace', fontSize: 12),
               ),
             ),
           ],

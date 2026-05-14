@@ -22,6 +22,7 @@ class SignScreen extends StatefulWidget {
 class _SignScreenState extends State<SignScreen> {
   final _contentController = TextEditingController();
   final _kindController = TextEditingController(text: '30078');
+  final _scrollController = ScrollController();
   final List<TagRow> _tagRows = [];
 
   Nip01Event? _signedEvent;
@@ -33,6 +34,7 @@ class _SignScreenState extends State<SignScreen> {
   void dispose() {
     _contentController.dispose();
     _kindController.dispose();
+    _scrollController.dispose();
     for (final row in _tagRows) {
       row.dispose();
     }
@@ -175,63 +177,74 @@ class _SignScreenState extends State<SignScreen> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 800),
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  TextField(
-                    controller: _kindController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(labelText: l10n.kindLabel),
+      body: Scrollbar(
+        controller: _scrollController,
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: SafeArea(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 800),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      TextField(
+                        controller: _kindController,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(labelText: l10n.kindLabel),
+                      ),
+                      const SizedBox(height: 24),
+                      Text(
+                        l10n.contentSection,
+                        style: theme.textTheme.titleMedium,
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: _contentController,
+                        maxLines: 12,
+                        minLines: 6,
+                        decoration: InputDecoration(hintText: l10n.contentHint),
+                      ),
+                      const SizedBox(height: 24),
+                      TagEditor(
+                        rows: _tagRows,
+                        onAdd: _addTagRow,
+                        onRemove: _removeTagRow,
+                      ),
+                      const SizedBox(height: 24),
+                      FilledButton.icon(
+                        onPressed: _isSigning ? null : _sign,
+                        icon: _isSigning
+                            ? const SizedBox(
+                                width: 16,
+                                height: 16,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : const Icon(Icons.draw_outlined),
+                        label: Text(l10n.signButton),
+                      ),
+                      if (_error != null) ...[
+                        const SizedBox(height: 12),
+                        Text(
+                          _error!,
+                          style: TextStyle(color: theme.colorScheme.error),
+                        ),
+                      ],
+                      if (_signedJson != null) ...[
+                        const SizedBox(height: 24),
+                        SignedEventCard(
+                          json: _signedJson!,
+                          onCopy: _copyJson,
+                          onSave: _saveJsonFile,
+                        ),
+                      ],
+                    ],
                   ),
-                  const SizedBox(height: 24),
-                  Text(l10n.contentSection, style: theme.textTheme.titleMedium),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: _contentController,
-                    maxLines: 12,
-                    minLines: 6,
-                    decoration: InputDecoration(hintText: l10n.contentHint),
-                  ),
-                  const SizedBox(height: 24),
-                  TagEditor(
-                    rows: _tagRows,
-                    onAdd: _addTagRow,
-                    onRemove: _removeTagRow,
-                  ),
-                  const SizedBox(height: 24),
-                  FilledButton.icon(
-                    onPressed: _isSigning ? null : _sign,
-                    icon: _isSigning
-                        ? const SizedBox(
-                            width: 16,
-                            height: 16,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : const Icon(Icons.draw_outlined),
-                    label: Text(l10n.signButton),
-                  ),
-                  if (_error != null) ...[
-                    const SizedBox(height: 12),
-                    Text(
-                      _error!,
-                      style: TextStyle(color: theme.colorScheme.error),
-                    ),
-                  ],
-                  if (_signedJson != null) ...[
-                    const SizedBox(height: 24),
-                    SignedEventCard(
-                      json: _signedJson!,
-                      onCopy: _copyJson,
-                      onSave: _saveJsonFile,
-                    ),
-                  ],
-                ],
+                ),
               ),
             ),
           ),

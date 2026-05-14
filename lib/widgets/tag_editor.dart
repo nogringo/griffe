@@ -4,8 +4,8 @@ import '../l10n/app_localizations.dart';
 
 class TagRow {
   TagRow(String name, String value)
-      : nameController = TextEditingController(text: name),
-        valueController = TextEditingController(text: value);
+    : nameController = TextEditingController(text: name),
+      valueController = TextEditingController(text: value);
 
   final TextEditingController nameController;
   final TextEditingController valueController;
@@ -50,10 +50,7 @@ class TagEditor extends StatelessWidget {
           ],
         ),
         if (rows.isEmpty)
-          Text(
-            l10n.tagsEmptyHint,
-            style: theme.textTheme.bodySmall,
-          ),
+          Text(l10n.tagsEmptyHint, style: theme.textTheme.bodySmall),
         ...rows.asMap().entries.map((entry) {
           final i = entry.key;
           final row = entry.value;
